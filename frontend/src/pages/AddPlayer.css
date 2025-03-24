@@ -1,0 +1,94 @@
+.add-player-container {
+  background-color: #1f1f1f;
+  color: white;
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(255, 165, 0, 0.5);
+}
+
+.add-player-container h2 {
+  text-align: center;
+  color: orange;
+  margin-bottom: 2rem;
+}
+
+.add-player-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #ffcc70;
+}
+
+.add-player-form input,
+.add-player-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  background-color: #2b2b2b;
+  border: none;
+  color: white;
+  font-size: 15px;
+}
+
+.add-player-form input:focus,
+.add-player-form select:focus {
+  outline: 2px solid orange;
+}
+
+.add-player-form h4 {
+  margin: 1.5rem 0 1rem;
+  color: orange;
+  text-align: center;
+}
+.add-player-form input[type="file"] {
+  background-color: #2a2a2a;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px dashed orange;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.add-player-form input[type="file"]:hover {
+  border-color: gold;
+}
+
+
+.add-player-form button {
+  background-color: orange;
+  color: black;
+  font-weight: bold;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.add-player-form button:hover {
+  background-color: white;
+  color: orange;
+  box-shadow: 0 0 10px orange;
+}
+.success-message {
+  margin-top: 1rem;
+  padding: 10px;
+  background-color: #1f1f1f;
+  color: #00ff88;
+  border: 2px solid #00ff88;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  20% { opacity: 1; transform: translateY(0); }
+  80% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-10px); }
+}

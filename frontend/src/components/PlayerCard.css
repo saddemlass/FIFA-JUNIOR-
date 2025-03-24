@@ -1,0 +1,96 @@
+.card {
+  background: linear-gradient(to bottom right, #FFD700, #FFA500);
+  border-radius: 12px;
+  padding: 16px;
+  width: 280px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  margin: 12px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, rotate 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.07) rotateZ(-1.5deg);
+  box-shadow: 0 10px 20px rgba(255, 204, 0, 0.6), 0 0 20px rgba(0, 0, 0, 0.6);
+  z-index: 10;
+  background: linear-gradient(to top left, #FFA500, #FFD700);
+}
+
+.card-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid white;
+  display: block;
+  margin: 0 auto;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.card-subtitle {
+  font-size: 14px;
+  text-align: center;
+}
+
+.evaluation {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.eval-item {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.btn-details {
+  background: white;
+  color: orange;
+  font-weight: bold;
+  width: 100%;
+  margin-top: 10px;
+  padding: 6px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.favorite {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 22px;
+  transition: transform 0.2s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.favorite:hover {
+  transform: scale(1.3);
+}
+
+.favorite.favori {
+  color: gold;
+  text-shadow: 0 0 6px black, 0 0 10px black;
+}
+
+.favorite.not-favori {
+  color: white;
+}
+
+.favorite.clicked {
+  animation: pulseStar 0.3s ease-in-out;
+}
+
+@keyframes pulseStar {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}

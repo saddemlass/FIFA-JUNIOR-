@@ -1,0 +1,247 @@
+openapi: 3.0.0
+info:
+  title: Football Scouting API
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000/api
+
+paths:
+  /players:
+    get:
+      summary: Récupérer tous les joueurs (avec filtres et tri)
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Créer un nouveau joueur
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Player'
+      responses:
+        '201':
+          description: Joueur créé
+
+  /players/{id}:
+    get:
+      summary: Récupérer un joueur par ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+    put:
+      summary: Modifier les informations d’un joueur
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Player'
+      responses:
+        '200':
+          description: Joueur modifié
+    delete:
+      summary: Supprimer un joueur
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Supprimé
+
+  /players/{id}/photo:
+    patch:
+      summary: Modifier uniquement la photo du joueur
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                photo:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Photo mise à jour
+
+  /players/{id}/match:
+    post:
+      summary: Ajouter un match au joueur
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Match'
+      responses:
+        '200':
+          description: Match ajouté
+
+  /players/{id}/comment:
+    post:
+      summary: Ajouter un commentaire au joueur
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: string
+      responses:
+        '200':
+          description: Commentaire ajouté
+
+  /players/{id}/favorite:
+    patch:
+      summary: Marquer/démarquer un joueur comme favori
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Statut favori modifié
+
+  /players/{id}/statistics:
+    get:
+      summary: Statistiques individuelles d’un joueur
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Statistiques du joueur
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  playerId:
+                    type: string
+                  fullName:
+                    type: string
+                  totalGoals:
+                    type: integer
+                  totalAssists:
+                    type: integer
+                  totalMinutes:
+                    type: integer
+                  averageRating:
+                    type: number
+
+components:
+  schemas:
+    Player:
+      type: object
+      properties:
+        fullName:
+          type: string
+        age:
+          type: integer
+        nationality:
+          type: string
+        position:
+          type: string
+        videoUrl:
+          type: string
+        evaluation:
+          $ref: '#/components/schemas/Evaluation'
+        levelTag:
+          type: string
+        photoUrl:
+          type: string
+        comments:
+          type: array
+          items:
+            type: string
+        isFavorite:
+          type: boolean
+        matchHistory:
+          type: array
+          items:
+            $ref: '#/components/schemas/Match'
+
+    Evaluation:
+      type: object
+      properties:
+        speed:
+          type: integer
+        dribble:
+          type: integer
+        vision:
+          type: integer
+        endurance:
+          type: integer
+        physical:
+          type: integer
+        tactical:
+          type: integer
+        potential:
+          type: integer
+
+    Match:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        competition:
+          type: string
+        opponent:
+          type: string
+        position:
+          type: string
+        goals:
+          type: integer
+        assists:
+          type: integer
+        minutesPlayed:
+          type: integer
+        matchRating:
+          type: number
+        comments:
+          type: string
+

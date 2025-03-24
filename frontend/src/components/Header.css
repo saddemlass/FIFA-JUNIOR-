@@ -1,0 +1,53 @@
+/* Conteneur principal du header */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #1a1a1a; /* Fond sombre */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Partie gauche (icône + titre) */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-icon {
+  font-size: 28px;
+  color: orange;
+}
+
+.header-title {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Partie navigation */
+.header-nav {
+  display: flex;
+  gap: 20px;
+}
+
+/* Style des boutons de navigation */
+.nav-btn {
+  padding: 10px 20px;
+  background-color: orange;
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(255, 165, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background-color: white;
+  color: orange;
+  border: 1px solid orange;
+}
+
+  
